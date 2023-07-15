@@ -6,6 +6,7 @@
 	import type { LayoutData } from "./$types";
 	import { onMount } from "svelte";
 	import { invalidate } from "$app/navigation";
+	import { Toaster } from 'svelte-french-toast';
 
 	const navigation = [
 		{ label: "Home", href: "/" },
@@ -33,7 +34,7 @@
 <svelte:head>
 	<title>Contactly</title>
 </svelte:head>
-
+<Toaster/>
 <div class="flex h-full flex-col">
 	<Navbar let:hidden let:toggle>
 		<NavBrand href="/">

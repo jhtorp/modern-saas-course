@@ -1,4 +1,4 @@
-import { hasReachedMaxContacts } from "$lib/helpers";
+import { handleLoginRedirect, hasReachedMaxContacts } from "$lib/helpers";
 import { createContactSchema, deleteContactSchema } from "$lib/schemas";
 import { getContactsCount } from "$lib/server/contacts";
 import { getSubscriptionTier } from "$lib/server/subscriptions";
@@ -11,7 +11,7 @@ import { setError, superValidate } from "sveltekit-superforms/server";
 export const load: PageServerLoad = async (event) => {
     const session = await event.locals.getSession();
     if (!session) {
-        throw redirect(302, '/login');
+        throw redirect(302, handleLoginRedirect(event));
     }
 
     async function getContacts() {
